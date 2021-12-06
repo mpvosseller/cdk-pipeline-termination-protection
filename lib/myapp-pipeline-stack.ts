@@ -13,7 +13,7 @@ export class MyappPipelineStack extends Stack {
     
     // to reproduce with your account update these values
     const githubOwner = "mpvosseller";
-    const githubRepo = "cdk-pipelines-example";
+    const githubRepo = "cdk-pipeline-termination-protection";
     const branch = "main";
     // create a "plaintext" secret in secrets manager with your github token 
     const githubAccessToken = SecretValue.secretsManager('github-token-2021-07-06')     
