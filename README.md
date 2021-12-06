@@ -1,6 +1,6 @@
 # Repo demonstrating CDK Pipelines bug with terminationProtection
 
-This repo demonstrates a bug with CDK Pipelines where the `terminationProtection` property of a Stack in a Stage of a CodePipeline is ignored.
+This repo demonstrates a bug with CDK Pipelines where the `terminationProtection` property of a `Stack` in a `Stage` of a `CodePipeline` is ignored.
 
 ## Instructions
 
