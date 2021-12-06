@@ -1,20 +1,19 @@
-# Repo demonstrating sam-beta-cdk bugs when CDK app uses CDK Pipelines
+# Repo demonstrating CDK Pipelines bug with terminationProtection
 
-This repo demonstrates [aws-sam-cli issue #3068](https://github.com/aws/aws-sam-cli/issues/3068). Specifically it shows how `sam-beta-cdk local invoke` can not find or invoke functions that are part of a typical CDK app that uses CDK Pipelines. Similarly `sam-beta-cdk local start-api` can not find and start HttpApis that are part of a typical CDK app that uses CDK Pipelines.
+This repo demonstrates a bug with CDK Pipelines where the `terminationProtection` property of a Stack in a Stage of a CodePipeline is ignored.
 
 ## Instructions
 
-1) clone this repo
-2) `npm install`
-3) `sam-beta-cdk local invoke` and observe it fails with 
-> Error: You must provide a function logical ID when there are more than one functions in your template. Possible options in your template: []
-4) `sam-beta-cdk local start-api` and observe it fails with
-> Error: You must provide a function logical ID when there are more than one functions in your template. Possible options in your template: []
-
-# Deploying
-
-If you want to actually deploy this to your account you will need to fork this repo and modify the GitHub paramaters in [lib/myapp-pipeline-stack.ts](lib/myapp-pipeline-stack.ts)
-
+1) Fork this repo
+2) Create a plain text secret in `SecretsManager` with your github token 
+3) Update `githubOwner`, `githubRepo`, and `githubAccessToken` in the file `myapp-pipeline-stack.ts`
+4) Run `npm install`
+5) Run `npm run cdk deploy`
+6) Log into the CloudFormation console
+7) Wait for the `MyappPipelineStack` stack to deploy
+8) Wait for the CodePipeline to complete and the `Prod-MyappStack` stack to be deployed
+9) Observe that the `MyappPipelineStack` stack correctly has termination protection enabled
+10) Observe that the `Prod-MyappStack` stack does NOT have termination protection enabled. **This is the bug**
 
 # Welcome to your CDK TypeScript project!
 
