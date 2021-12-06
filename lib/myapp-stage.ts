@@ -5,6 +5,8 @@ import { MyappStack } from './myapp-stack'
 export class MyAppStage extends Stage {
     constructor(scope: Construct, id: string, props?: StageProps) {
         super(scope, id, props)
-        new MyappStack(this, 'MyappStack')
+        new MyappStack(this, 'MyappStack', {
+            terminationProtection: true,
+        })
     }
 }
