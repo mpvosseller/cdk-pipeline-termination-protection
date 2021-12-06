@@ -6,7 +6,7 @@ This repo demonstrates a bug with CDK Pipelines where the `terminationProtection
 
 1) Fork this repo
 2) Create a plain text secret in `SecretsManager` with your github token 
-3) Update `githubOwner`, `githubRepo`, and `githubAccessToken` in the file `myapp-pipeline-stack.ts`
+3) Update `githubOwner`, `githubRepo`, and `githubAccessToken` in the file [`myapp-pipeline-stack.ts`](lib/myapp-pipeline-stack.ts)
 4) Run `npm install`
 5) Run `npm run cdk deploy`
 6) Log into the CloudFormation console
