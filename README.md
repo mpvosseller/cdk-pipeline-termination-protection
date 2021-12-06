@@ -1,6 +1,10 @@
 # Repo demonstrating CDK Pipelines bug with terminationProtection
 
-This repo demonstrates a bug with CDK Pipelines where the `terminationProtection` property of a `Stack` in a `Stage` of a `CodePipeline` is ignored.
+This repo demonstrates [issue #17871](https://github.com/aws/aws-cdk/issues/17871) with CDK Pipelines:
+
+The `Stack` property `terminationProtection` is ignored when the `Stack` is deployed from a CDK `CodePipeline`.
+
+If the stack is deployed directly from the CLI (not from the CDK `CodePipeline`) it works.
 
 ## Instructions
 
@@ -14,6 +18,9 @@ This repo demonstrates a bug with CDK Pipelines where the `terminationProtection
 8) Wait for the CodePipeline to complete and the `Prod-MyappStack` stack to be deployed
 9) Observe that the `MyappPipelineStack` stack correctly has termination protection enabled
 10) Observe that the `Prod-MyappStack` stack does NOT have termination protection enabled. **This is the bug**. `terminationProtection` was set to true but was not enabled.
+11) Run `npm run cdk deploy "MyappPipelineStack/Prod/MyappStack"`
+12) Observe that the `Prod-MyappStack` stack now has termination protection enabled.
+
 
 # Welcome to your CDK TypeScript project!
 
