@@ -13,7 +13,7 @@ This repo demonstrates a bug with CDK Pipelines where the `terminationProtection
 7) Wait for the `MyappPipelineStack` stack to deploy
 8) Wait for the CodePipeline to complete and the `Prod-MyappStack` stack to be deployed
 9) Observe that the `MyappPipelineStack` stack correctly has termination protection enabled
-10) Observe that the `Prod-MyappStack` stack does NOT have termination protection enabled. **This is the bug**
+10) Observe that the `Prod-MyappStack` stack does NOT have termination protection enabled. **This is the bug**. `terminationProtection` was set to true but was not enabled.
 
 # Welcome to your CDK TypeScript project!
 
